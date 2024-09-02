@@ -10,15 +10,15 @@ def load_recipe(json_str):
 
 
 # Funktion zur Anpassung der Rezeptmengen für eine variable Personenanzahl
-def adjust_recipe(original_recipe, servings):
-    factor = servings / original_recipe['servings']
+def adjust_recipe(recipe_data, servings):
+    factor = servings / recipe_data['servings']
     adjusted_ingredients = {
         ingredient: amount * factor
-        for ingredient, amount in original_recipe['ingredients'].items()
+        for ingredient, amount in recipe_data['ingredients'].items()
     }
     # Neues angepasstes Rezept zurückgeben, ohne das Original zu verändern
     return {
-        'title': original_recipe['title'],
+        'title': recipe_data['title'],
         'ingredients': adjusted_ingredients,
         'servings': servings
     }
